@@ -1,0 +1,24 @@
+    
+        const scrollPosElement = document.getElementById('scrollPos');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            
+            // Update scroll position indicator
+            scrollPosElement.textContent = Math.round(scrollY);
+
+            // First animation trigger at 300px
+            if (scrollY > 300) {
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+
+            // Second animation trigger at 800px
+            if (scrollY > 800) {
+                document.body.classList.add('scrolled-far');
+            } else {
+                document.body.classList.remove('scrolled-far');
+            }
+        });
+    </script>
