@@ -142,7 +142,7 @@
     color: white;
     font-weight: bold;
     font-size: 22px;
-    font-family:  DungGeunMo, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: DungGeunMo, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.70);
     pointer-events: none;
 }
@@ -180,4 +180,23 @@
     font-family: 'Windows XP Tahoma', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 32px;
     font-weight: 400;
+}
+
+.ie-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 65.49px;
+    height: 70.571px;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.1s ease;
+}
+
+.ie-icon:hover {
+    transform: scale(1.05);
+}
+
+.ie-icon:active {
+    transform: scale(0.98);
 }
