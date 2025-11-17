@@ -183,12 +183,57 @@
 }
 
 .ie-icon {
-    position: fixed;
+    position: fixed; 
     width: 90px;
-    cursor: pointer;
-    z-index: 10;
-    transition: transform 0.1s ease;
+    height: auto;
+    left: 40%;
+    top: 50.5%;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.4s ease, transform 0.6s ease;
+    z-index: 2;
+    transition-delay: 0.3s;
+}
+
+.ie-icon.scrolled {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.bestWork-icon {
+    position: fixed; 
+    width: 90px;
+    height: auto;
+    left: calc(50% - 45px);
     top: 50%;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.4s ease, transform 0.6s ease;
+    z-index: 2;
+    transition-delay: 0.2s;
+}
+
+.bestWork-icon.scrolled {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contactMe-icon {
+    position: fixed; 
+    width: 75px;
+    height: auto;
+    left: 55%;
+    top: 48%;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.4s ease, transform 0.6s ease;
+    z-index: 2;
+    transition-delay: 0.1s;
+}
+
+.contactMe-icon.scrolled {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .ie-icon:hover {
@@ -199,20 +244,18 @@
     transform: scale(0.98);
 }
 
-.bestWork-icon {
-    position: fixed;
-    left: 50%;
-    width: 90px;
-    cursor: pointer;
-    z-index: 10;
-    transition: transform 0.1s ease;
-    top: 50%;
-}
-
 .bestWork-icon:hover {
     transform: scale(1.05);
 }
 
 .bestWork-icon:active {
+    transform: scale(0.98);
+}
+
+.contactMe-icon:hover {
+    transform: scale(1.05);
+}
+
+.contactMe-icon:active {
     transform: scale(0.98);
 }

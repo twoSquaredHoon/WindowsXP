@@ -1,4 +1,7 @@
 let virtualScroll = 0;
+const ieIcon = document.querySelector('.ie-icon');
+const bestWorkIcon = document.querySelector('.bestWork-icon');
+const contactMeIcon = document.querySelector('.contactMe-icon');
 
 window.addEventListener('wheel', (e) => {
     virtualScroll += e.deltaY;
@@ -9,8 +12,14 @@ window.addEventListener('wheel', (e) => {
     // Lower threshold since max is now 400
     if (virtualScroll > 150) {
         document.body.classList.add('scrolled');
+        ieIcon.classList.add('scrolled');
+        bestWorkIcon.classList.add('scrolled');
+        contactMeIcon.classList.add('scrolled');
     } else {
         document.body.classList.remove('scrolled');
+        ieIcon.classList.remove('scrolled');
+        bestWorkIcon.classList.remove('scrolled');
+        contactMeIcon.classList.remove('scrolled');
     }
 });
 
