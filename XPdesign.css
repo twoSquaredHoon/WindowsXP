@@ -184,13 +184,11 @@
 
 .ie-icon {
     position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 65.49px;
-    height: 70.571px;
+    width: 90px;
     cursor: pointer;
     z-index: 10;
     transition: transform 0.1s ease;
+    top: 50%;
 }
 
 .ie-icon:hover {
@@ -198,5 +196,23 @@
 }
 
 .ie-icon:active {
+    transform: scale(0.98);
+}
+
+.bestWork-icon {
+    position: fixed;
+    left: 50%;
+    width: 90px;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.1s ease;
+    top: 50%;
+}
+
+.bestWork-icon:hover {
+    transform: scale(1.05);
+}
+
+.bestWork-icon:active {
     transform: scale(0.98);
 }
