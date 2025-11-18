@@ -220,10 +220,10 @@
 
 .contactMe-icon {
     position: fixed; 
-    width: 75px;
+    width: 65px;
     height: auto;
     left: 55%;
-    top: 48%;
+    top: 50%;
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.4s ease, transform 0.6s ease;
@@ -236,25 +236,19 @@
     transform: translateY(0);
 }
 
-.ie-icon:hover {
-    transform: scale(1.05);
-}
+
 
 .ie-icon:active {
     transform: scale(0.98);
 }
 
-.bestWork-icon:hover {
-    transform: scale(1.05);
-}
+
 
 .bestWork-icon:active {
     transform: scale(0.98);
 }
 
-.contactMe-icon:hover {
-    transform: scale(1.05);
-}
+
 
 .contactMe-icon:active {
     transform: scale(0.98);
