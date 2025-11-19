@@ -110,6 +110,12 @@
     overflow: visible;
 }
 
+.internetExplorerButton {
+background-color: transparent;
+padding: 0;
+border: transparent;
+}
+
 .startButton svg {
     width: 143px;
     height: 40px;
