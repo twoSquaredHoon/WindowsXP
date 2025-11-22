@@ -1,6 +1,14 @@
 let virtualScroll = 0;
 
 window.addEventListener('wheel', (e) => {
+    // Check if any tabs are open
+    const openTabs = document.querySelectorAll('.tab-container[style*="display: block"]');
+    
+    // If tabs are open, don't scroll the background
+    if (openTabs.length > 0) {
+        return;
+    }
+    
     const ieIcon = document.querySelector('.aboutMeApp');
     const bestWorkIcon = document.querySelector('.myBestWorksApp');
     const contactMeIcon = document.querySelector('.contactMeApp');
@@ -227,12 +235,40 @@ function openTab(tabClass) {
     const tab = document.querySelector(`.${tabClass}`);
     if (tab) {
         tab.style.display = 'block';
-        bringToFront(tab); // Bring newly opened tab to front
+        tab.style.opacity = '0';
+        bringToFront(tab);
         setTimeout(() => {
             tab.style.opacity = '1';
         }, 10);
+        
+        // Disable background scrolling
+        document.body.classList.add('no-scroll');
     }
 }
+
+containers.forEach(container => {
+    const tabHeader = container.querySelector('.tab-header');
+    const handles = container.querySelectorAll('.resize-handle');
+    const closeBtn = container.querySelector('.close-btn');
+
+    // ... existing code ...
+
+    // Close button - updated to re-enable scrolling if all tabs are closed
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            container.style.opacity = '0';
+            setTimeout(() => {
+                container.style.display = 'none';
+                
+                // Re-enable scrolling only if all tabs are closed
+                const visibleTabs = document.querySelectorAll('.tab-container[style*="display: block"]');
+                if (visibleTabs.length === 0) {
+                    document.body.classList.remove('no-scroll');
+                }
+            }, 300);
+        });
+    }
+});
 
 // Add event listeners after DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function () {

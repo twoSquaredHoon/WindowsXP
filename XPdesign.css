@@ -22,6 +22,11 @@
     z-index: -1;
 }
 
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
 .parallax1 {
     position: fixed;
     bottom: -40%;
@@ -272,6 +277,18 @@
 
 .contactMeApp:active {
     transform: scale(0.98);
+}
+
+.tab-header {
+    width: 100%;
+    height: 100%;
+    cursor: move;
+    user-select: none;
+    position: relative;
+    background: #1E5CD5;
+    border-radius: 12px 12px 0 0;
+    overflow-y: auto; /* Enable vertical scrolling inside tab */
+    overflow-x: hidden; /* Hide horizontal overflow */
 }
 
 /* Tab Container */
