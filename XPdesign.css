@@ -21,7 +21,7 @@
     transform: scaleX(1.5) scaleY(1.5);
     z-index: -1;
 }
-
+/* Scroll Lock when tab is open*/
 body.no-scroll {
     overflow: hidden;
     height: 100vh;
@@ -558,4 +558,404 @@ body.no-scroll {
     bottom: 24px;
     width: 12px;
     cursor: w-resize;
+}
+
+/* Tab Header - Fixed height */
+.tab-header {
+    width: 100%;
+    height: 32px; /* Fixed header height */
+    cursor: move;
+    user-select: none;
+    position: relative;
+    background: #1E5CD5;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+}
+
+/* Tab Body - Contains everything below header */
+.tab-body {
+    width: 100%;
+    height: calc(100% - 32px); /* Remaining space after header */
+    display: flex;
+    flex-direction: column;
+    background: #FEFFFE;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+}
+
+/* Tab Title in Header */
+.tab-title {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+/* Navigation Bar (Windows XP style) */
+.nav-bar {
+    width: 100%;
+    height: 36px;
+    background: linear-gradient(180deg, #F3F3F3 0%, #E8E8E8 100%);
+    border-bottom: 1px solid #B8B8B8;
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    gap: 4px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.nav-btn {
+    height: 24px;
+    padding: 0 10px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #ECECEC 100%);
+    border: 1px solid #ACA899;
+    border-radius: 3px;
+    font-size: 11px;
+    font-family: 'Tahoma', sans-serif;
+    cursor: pointer;
+    color: #000;
+    white-space: nowrap;
+}
+
+.nav-btn:hover {
+    background: linear-gradient(180deg, #FEFEFE 0%, #F5F5F5 100%);
+    border-color: #0066CC;
+}
+
+.nav-btn:active {
+    background: linear-gradient(180deg, #DEDEDE 0%, #F0F0F0 100%);
+}
+
+.address-bar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: white;
+    border: 1px solid #A0A0A0;
+    padding: 2px 4px;
+    border-radius: 2px;
+    min-width: 0;
+}
+
+.address-label {
+    font-size: 11px;
+    font-family: 'Tahoma', sans-serif;
+    color: #666;
+    white-space: nowrap;
+}
+
+.address-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 11px;
+    font-family: 'Tahoma', sans-serif;
+    background: transparent;
+    min-width: 0;
+}
+
+.go-btn, .view-btn {
+    height: 24px;
+    padding: 0 10px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #ECECEC 100%);
+    border: 1px solid #ACA899;
+    border-radius: 3px;
+    font-size: 11px;
+    font-family: 'Tahoma', sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.spacer {
+    flex: 1;
+}
+
+/* Tab Content - Scrollable area */
+.tab-content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #ECE9D8;
+}
+
+/* XP Window Content */
+.xp-window {
+    padding: 20px;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+.xp-title {
+    font-family: 'Tahoma', sans-serif;
+    font-size: 16px;
+    color: #003399;
+    margin: 0 0 20px 0;
+    font-weight: bold;
+}
+
+/* Profile Section (Tab 1) */
+.profile-section {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.profile-image-container {
+    display: inline-block;
+    border: 3px solid #0054A6;
+    padding: 5px;
+    background: white;
+    margin-bottom: 15px;
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    display: block;
+    object-fit: cover;
+}
+
+/* XP Panels */
+.info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.xp-panel {
+    background: white;
+    border: 1px solid #B8B8B8;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.panel-header {
+    background: linear-gradient(180deg, #4584E8 0%, #2860D8 100%);
+    color: white;
+    padding: 6px 10px;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.panel-content {
+    padding: 12px;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 11px;
+}
+
+.panel-content p {
+    margin: 6px 0;
+    line-height: 1.6;
+}
+
+.xp-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.xp-list li {
+    padding: 5px 0;
+    border-bottom: 1px dotted #CCC;
+}
+
+.xp-list li:last-child {
+    border-bottom: none;
+}
+
+/* Projects Grid (Tab 2) */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.project-folder {
+    background: white;
+    border: 2px solid #C0C0C0;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.project-folder:hover {
+    border-color: #0066CC;
+    box-shadow: 0 2px 8px rgba(0, 102, 204, 0.3);
+}
+
+.folder-icon {
+    font-size: 40px;
+    text-align: center;
+    padding: 8px;
+    background: linear-gradient(180deg, #F3F3F3 0%, #E8E8E8 100%);
+}
+
+.folder-content {
+    padding: 12px;
+}
+
+.folder-content img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid #CCC;
+    margin-bottom: 8px;
+}
+
+.folder-content h3 {
+    font-family: 'Tahoma', sans-serif;
+    font-size: 12px;
+    color: #003399;
+    margin: 0 0 6px 0;
+}
+
+.folder-content p {
+    font-family: 'Tahoma', sans-serif;
+    font-size: 10px;
+    color: #666;
+    margin: 0 0 10px 0;
+}
+
+.folder-actions {
+    display: flex;
+    gap: 6px;
+}
+
+/* XP Buttons */
+.xp-button {
+    padding: 5px 12px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #ECECEC 100%);
+    border: 1px solid #ACA899;
+    border-radius: 3px;
+    font-size: 10px;
+    font-family: 'Tahoma', sans-serif;
+    cursor: pointer;
+    color: #000;
+    flex: 1;
+}
+
+.xp-button:hover {
+    background: linear-gradient(180deg, #FEFEFE 0%, #F5F5F5 100%);
+    border-color: #0066CC;
+}
+
+.xp-button:active {
+    background: linear-gradient(180deg, #DEDEDE 0%, #F0F0F0 100%);
+}
+
+/* Contact Form (Tab 3) */
+.contact-form {
+    max-width: 550px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border: 1px solid #B8B8B8;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #000;
+    font-size: 11px;
+    font-family: 'Tahoma', sans-serif;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 5px 7px;
+    border: 1px solid #7F9DB9;
+    font-size: 11px;
+    font-family: 'Tahoma', sans-serif;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    outline: 1px solid #0066CC;
+    border-color: #0066CC;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.button-group {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.submit-btn {
+    background: linear-gradient(180deg, #FFFFFF 0%, #ECECEC 100%);
+    color: #000;
+    padding: 6px 20px;
+    border: 1px solid #ACA899;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Tahoma', sans-serif;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(180deg, #FEFEFE 0%, #F5F5F5 100%);
+    border-color: #0066CC;
+}
+
+.submit-btn:active {
+    background: linear-gradient(180deg, #DEDEDE 0%, #F0F0F0 100%);
+}
+
+.xp-button-secondary {
+    background: linear-gradient(180deg, #FFFFFF 0%, #ECECEC 100%);
+    color: #000;
+    padding: 6px 20px;
+    border: 1px solid #ACA899;
+    border-radius: 3px;
+    font-size: 11px;
+    cursor: pointer;
+    font-family: 'Tahoma', sans-serif;
+}
+
+.xp-button-secondary:hover {
+    background: linear-gradient(180deg, #FEFEFE 0%, #F5F5F5 100%);
+    border-color: #0066CC;
+}
+
+/* Tab container sizing */
+.tab-container {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 800px;
+    height: 550px;
+    z-index: 1000;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+    display: none;
+    opacity: 0;
+}
+
+.tab-container.tab3 {
+    width: 650px;
+    height: 500px;
 }

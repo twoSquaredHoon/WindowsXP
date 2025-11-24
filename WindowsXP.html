@@ -278,81 +278,268 @@
             </svg>
         </button>
 
-            <!-- Tab 1: About Me -->
-    <div class="tab-container tab1">
-        <div class="tab-header about-me-tab">
-            <button class="window-btn minimize-btn">
-                <span class="minimize-icon"></span>
-            </button>
-            <button class="window-btn fullscreen-btn">
-                <span class="fullscreen-icon"></span>
-            </button>
-            <button class="window-btn close-btn">
-                <span class="close-icon"></span>
-            </button>
-        </div>
-
-        <!-- Resize handles -->
-        <div class="resize-handle nw"></div>
-        <div class="resize-handle ne"></div>
-        <div class="resize-handle sw"></div>
-        <div class="resize-handle se"></div>
-        <div class="resize-handle n"></div>
-        <div class="resize-handle s"></div>
-        <div class="resize-handle e"></div>
-        <div class="resize-handle w"></div>
+<!-- Tab 1: About Me -->
+<div class="tab-container tab1">
+    <div class="tab-header about-me-tab">
+        <span class="tab-title">About Me - Internet Explorer</span>
+        <button class="window-btn minimize-btn">
+            <span class="minimize-icon"></span>
+        </button>
+        <button class="window-btn fullscreen-btn">
+            <span class="fullscreen-icon"></span>
+        </button>
+        <button class="window-btn close-btn">
+            <span class="close-icon"></span>
+        </button>
     </div>
 
-    <!-- Tab 2: My Best Works -->
-    <div class="tab-container tab2" style="display: none;">
-        <div class="tab-header best-works-tab">
-            <button class="window-btn minimize-btn">
-                <span class="minimize-icon"></span>
-            </button>
-            <button class="window-btn fullscreen-btn">
-                <span class="fullscreen-icon"></span>
-            </button>
-            <button class="window-btn close-btn">
-                <span class="close-icon"></span>
-            </button>
+    <!-- Content Area (below header) -->
+    <div class="tab-body">
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <button class="nav-btn">← Back</button>
+            <button class="nav-btn">Forward →</button>
+            <button class="nav-btn">🏠</button>
+            <div class="address-bar">
+                <span class="address-label">Address</span>
+                <input type="text" value="C:\MyComputer\AboutMe" readonly>
+                <button class="go-btn">Go</button>
+            </div>
         </div>
 
-        <!-- Resize handles -->
-        <div class="resize-handle nw"></div>
-        <div class="resize-handle ne"></div>
-        <div class="resize-handle sw"></div>
-        <div class="resize-handle se"></div>
-        <div class="resize-handle n"></div>
-        <div class="resize-handle s"></div>
-        <div class="resize-handle e"></div>
-        <div class="resize-handle w"></div>
+        <!-- About Me Content -->
+        <div class="tab-content">
+            <div class="xp-window">
+                <div class="profile-section">
+                    <div class="profile-image-container">
+                        <img src="https://via.placeholder.com/150" alt="Profile" class="profile-img">
+                    </div>
+                    <h2 class="xp-title">About Me</h2>
+                </div>
+                
+                <div class="info-container">
+                    <div class="xp-panel">
+                        <div class="panel-header">Personal Information</div>
+                        <div class="panel-content">
+                            <p><strong>Name:</strong> Your Name</p>
+                            <p><strong>Location:</strong> Your City</p>
+                            <p><strong>Profession:</strong> Web Developer</p>
+                        </div>
+                    </div>
+
+                    <div class="xp-panel">
+                        <div class="panel-header">Skills</div>
+                        <div class="panel-content">
+                            <ul class="xp-list">
+                                <li>🔹 JavaScript / TypeScript</li>
+                                <li>🔹 React / Vue / Angular</li>
+                                <li>🔹 HTML5 & CSS3</li>
+                                <li>🔹 Node.js</li>
+                                <li>🔹 UI/UX Design</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="xp-panel">
+                        <div class="panel-header">Experience</div>
+                        <div class="panel-content">
+                            <p>5+ years in web development</p>
+                            <p>Specialized in creating modern, responsive applications</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Tab 3: Contact Me -->
-    <div class="tab-container tab3" style="display: none;">
-        <div class="tab-header contact-me-tab">
-            <button class="window-btn minimize-btn">
-                <span class="minimize-icon"></span>
-            </button>
-            <button class="window-btn fullscreen-btn">
-                <span class="fullscreen-icon"></span>
-            </button>
-            <button class="window-btn close-btn">
-                <span class="close-icon"></span>
-            </button>
+    <!-- Resize handles -->
+    <div class="resize-handle nw"></div>
+    <div class="resize-handle ne"></div>
+    <div class="resize-handle sw"></div>
+    <div class="resize-handle se"></div>
+    <div class="resize-handle n"></div>
+    <div class="resize-handle s"></div>
+    <div class="resize-handle e"></div>
+    <div class="resize-handle w"></div>
+</div>
+
+<!-- Tab 2: My Best Works -->
+<div class="tab-container tab2" style="display: none;">
+    <div class="tab-header best-works-tab">
+        <span class="tab-title">My Best Works - Windows Explorer</span>
+        <button class="window-btn minimize-btn">
+            <span class="minimize-icon"></span>
+        </button>
+        <button class="window-btn fullscreen-btn">
+            <span class="fullscreen-icon"></span>
+        </button>
+        <button class="window-btn close-btn">
+            <span class="close-icon"></span>
+        </button>
+    </div>
+
+    <!-- Content Area (below header) -->
+    <div class="tab-body">
+        <!-- Toolbar -->
+        <div class="nav-bar">
+            <button class="nav-btn">← Back</button>
+            <button class="nav-btn">Forward →</button>
+            <button class="nav-btn">🔼</button>
+            <div class="address-bar">
+                <span class="address-label">Address</span>
+                <input type="text" value="C:\MyComputer\Projects" readonly>
+                <button class="go-btn">Go</button>
+            </div>
+            <button class="view-btn">📋 View</button>
         </div>
 
-        <!-- Resize handles -->
-        <div class="resize-handle nw"></div>
-        <div class="resize-handle ne"></div>
-        <div class="resize-handle sw"></div>
-        <div class="resize-handle se"></div>
-        <div class="resize-handle n"></div>
-        <div class="resize-handle s"></div>
-        <div class="resize-handle e"></div>
-        <div class="resize-handle w"></div>
+        <!-- My Best Works Content -->
+        <div class="tab-content">
+            <div class="xp-window">
+                <h2 class="xp-title">My Portfolio</h2>
+                
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-folder">
+                        <div class="folder-icon">📁</div>
+                        <div class="folder-content">
+                            <img src="https://via.placeholder.com/200x120" alt="Project 1">
+                            <h3>E-Commerce Website</h3>
+                            <p>Full-stack online shopping platform</p>
+                            <div class="folder-actions">
+                                <button class="xp-button">View</button>
+                                <button class="xp-button">Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-folder">
+                        <div class="folder-icon">📁</div>
+                        <div class="folder-content">
+                            <img src="https://via.placeholder.com/200x120" alt="Project 2">
+                            <h3>Social Media App</h3>
+                            <p>Real-time messaging and feeds</p>
+                            <div class="folder-actions">
+                                <button class="xp-button">View</button>
+                                <button class="xp-button">Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-folder">
+                        <div class="folder-icon">📁</div>
+                        <div class="folder-content">
+                            <img src="https://via.placeholder.com/200x120" alt="Project 3">
+                            <h3>Dashboard Analytics</h3>
+                            <p>Data visualization dashboard</p>
+                            <div class="folder-actions">
+                                <button class="xp-button">View</button>
+                                <button class="xp-button">Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project-folder">
+                        <div class="folder-icon">📁</div>
+                        <div class="folder-content">
+                            <img src="https://via.placeholder.com/200x120" alt="Project 4">
+                            <h3>Weather App</h3>
+                            <p>Real-time weather forecasting</p>
+                            <div class="folder-actions">
+                                <button class="xp-button">View</button>
+                                <button class="xp-button">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-        
+
+    <!-- Resize handles -->
+    <div class="resize-handle nw"></div>
+    <div class="resize-handle ne"></div>
+    <div class="resize-handle sw"></div>
+    <div class="resize-handle se"></div>
+    <div class="resize-handle n"></div>
+    <div class="resize-handle s"></div>
+    <div class="resize-handle e"></div>
+    <div class="resize-handle w"></div>
+</div>
+
+<!-- Tab 3: Contact Me -->
+<div class="tab-container tab3" style="display: none;">
+    <div class="tab-header contact-me-tab">
+        <span class="tab-title">Contact Me - Outlook Express</span>
+        <button class="window-btn minimize-btn">
+            <span class="minimize-icon"></span>
+        </button>
+        <button class="window-btn fullscreen-btn">
+            <span class="fullscreen-icon"></span>
+        </button>
+        <button class="window-btn close-btn">
+            <span class="close-icon"></span>
+        </button>
+    </div>
+
+    <!-- Content Area (below header) -->
+    <div class="tab-body">
+        <!-- Mail Toolbar -->
+        <div class="nav-bar">
+            <button class="nav-btn">📧 New Mail</button>
+            <button class="nav-btn">📎 Attach</button>
+            <button class="nav-btn">📋 Priority</button>
+            <div class="spacer"></div>
+            <button class="nav-btn">✉️ Send</button>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="tab-content">
+            <div class="xp-window">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">What's up:</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="submit-btn">Send Message</button>
+                        <button type="reset" class="xp-button-secondary">Clear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resize handles -->
+    <div class="resize-handle nw"></div>
+    <div class="resize-handle ne"></div>
+    <div class="resize-handle sw"></div>
+    <div class="resize-handle se"></div>
+    <div class="resize-handle n"></div>
+    <div class="resize-handle s"></div>
+    <div class="resize-handle e"></div>
+    <div class="resize-handle w"></div>
+</div>
+
         <script src="XPFunctions.js"></script>
 </body>
 
