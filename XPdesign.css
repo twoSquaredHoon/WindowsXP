@@ -70,7 +70,7 @@ body.no-scroll {
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 5;
+    z-index: 2000;
     overflow: visible;
 }
 
@@ -97,7 +97,7 @@ body.no-scroll {
     position: fixed;
     bottom: 0px;
     right: 0px;
-    z-index: 6;
+    z-index: 2001;
 }
 
 .startButton {
@@ -108,7 +108,7 @@ body.no-scroll {
     position: fixed;
     bottom: 0px;
     left: -8px;
-    z-index: 6;
+    z-index: 2001;
     cursor: pointer;
     width: 143px;
     height: 40px;
@@ -180,7 +180,7 @@ body.no-scroll {
     width: 35px;
     height: 31.37px;
     pointer-events: none;
-    z-index: 7;
+    z-index: 2002;
 }
 
 .ampm {
@@ -342,12 +342,37 @@ body.no-scroll {
     background: linear-gradient(to bottom, #498DEA, #1E5CD5);
 }
 
-/* Bottom gradient strip */
+.tab-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+
+    width: calc(100% - 16px);
+    left: 8px;
+
+    height: 5px;
+    background: linear-gradient(to bottom, #1E5CD5, #1941A5);
+
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+
+/* Bottom gradient strip 
 .tab-header::after {
     bottom: 0;
     height: 5px;
     background: linear-gradient(to bottom, #1E5CD5, #1941A5);
-}
+} */
+/*
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+    width: calc(100% - 16px);
+    height: 5px;
+    background: linear-gradient(to bottom, #1E5CD5, #1941A5);
+*/
+
 
 /* About Me Tab - Blue (default) */
 .about-me-tab {
@@ -580,7 +605,7 @@ body.no-scroll {
     height: calc(100% - 32px); /* Remaining space after header */
     display: flex;
     flex-direction: column;
-    background: #1E5CD5;
+    background: #1E5CD5;;
     border-radius: 0 0 0px 0px; /* outside border radius */
     overflow: hidden;
 }
@@ -598,86 +623,93 @@ body.no-scroll {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     pointer-events: none;
 }
-
 /* Navigation Bar (Windows XP style) */
 .nav-bar {
-    width: calc(100% - 16px); /* because 8px on each side */
-    height: 36px;
-    margin: 0 8px; /* ADD THIS (left/right margin only) */
-    background: linear-gradient(180deg, #F3F3F3 0%, #E8E8E8 100%);
-    border-bottom: 1px solid #B8B8B8;
-    display: flex;
-    align-items: center;
-    padding: 0 6px;
-    box-sizing: border-box;
-    flex-shrink: 0;
+width: calc(100% - 16px);
+margin: 0 8px;
+background: linear-gradient(180deg, #F3F3F3 0%, #E8E8E8 100%);
+border-bottom: 1px solid #B8B8B8;
+display: flex;
+flex-direction: column; /* CHANGED: stack lines vertically */
+padding: 4px 6px; /* CHANGED: added vertical padding */
+box-sizing: border-box;
+flex-shrink: 0;
+gap: 4px; /* ADDED: spacing between lines */
+}
+
+.nav-line { /* ADDED: new class for each line */
+display: flex;
+align-items: center;
+gap: 4px;
+width: 100%;
 }
 
 .nav-btn {
-    height: 24px;
-    padding: 0 10px;
-    background: linear-gradient(180deg, #FFFFFF 0%, #ECECEC 100%);
-    border: 1px solid #ACA899;
-    border-radius: 3px;
-    font-size: 11px;
-    font-family: 'Tahoma', sans-serif;
-    cursor: pointer;
-    color: #000;
-    white-space: nowrap;
+height: 24px;
+padding: 0 10px;
+background: linear-gradient(180deg, #FFFFFF 0%, #ECECEC 100%);
+border: 1px solid #ACA899;
+border-radius: 3px;
+font-size: 11px;
+font-family: 'Tahoma', sans-serif;
+cursor: pointer;
+color: #000;
+white-space: nowrap;
 }
 
 .nav-btn:hover {
-    background: linear-gradient(180deg, #FEFEFE 0%, #F5F5F5 100%);
-    border-color: #0066CC;
+background: linear-gradient(180deg, #FEFEFE 0%, #F5F5F5 100%);
+border-color: #0066CC;
 }
 
 .nav-btn:active {
-    background: linear-gradient(180deg, #DEDEDE 0%, #F0F0F0 100%);
+background: linear-gradient(180deg, #DEDEDE 0%, #F0F0F0 100%);
 }
 
 .address-bar {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    background: white;
-    border: 1px solid #A0A0A0;
-    padding: 2px 4px;
-    border-radius: 2px;
-    min-width: 0;
+flex: 1;
+display: flex;
+align-items: center;
+gap: 4px;
+background: white;
+border: 1px solid #A0A0A0;
+padding: 2px 4px;
+border-radius: 2px;
+min-width: 0;
+height: 24px; /* ADDED: consistent height */
 }
 
 .address-label {
-    font-size: 11px;
-    font-family: 'Tahoma', sans-serif;
-    color: #666;
-    white-space: nowrap;
+font-size: 11px;
+font-family: 'Tahoma', sans-serif;
+color: #666;
+white-space: nowrap;
 }
 
 .address-bar input {
-    flex: 1;
-    border: none;
-    outline: none;
-    font-size: 11px;
-    font-family: 'Tahoma', sans-serif;
-    background: transparent;
-    min-width: 0;
+flex: 1;
+border: none;
+outline: none;
+font-size: 11px;
+font-family: 'Tahoma', sans-serif;
+background: transparent;
+min-width: 0;
 }
 
 .go-btn, .view-btn {
-    height: 24px;
-    padding: 0 10px;
-    background: linear-gradient(180deg, #FFFFFF 0%, #ECECEC 100%);
-    border: 1px solid #ACA899;
-    border-radius: 3px;
-    font-size: 11px;
-    font-family: 'Tahoma', sans-serif;
-    cursor: pointer;
-    white-space: nowrap;
+height: 24px;
+padding: 0 10px;
+background: linear-gradient(180deg, #FFFFFF 0%, #ECECEC 100%);
+border: 1px solid #ACA899;
+border-radius: 3px;
+font-size: 11px;
+font-family: 'Tahoma', sans-serif;
+cursor: pointer;
+white-space: nowrap;
 }
 
 .spacer {
-    flex: 1;
+flex: 1;
 }
 
 /* Tab Content - Scrollable area */
