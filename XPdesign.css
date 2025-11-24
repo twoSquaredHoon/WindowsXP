@@ -503,8 +503,8 @@ body.no-scroll {
 .ne {
     top: 0;
     right: 0;
-    width: 24px;
-    height: 24px;
+    width: 10px;
+    height: 10px;
     cursor: ne-resize;
     border-top-right-radius: 12px;
 }
