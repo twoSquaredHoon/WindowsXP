@@ -21,6 +21,7 @@
     transform: scaleX(1.5) scaleY(1.5);
     z-index: -1;
 }
+
 /* Scroll Lock when tab is open*/
 body.no-scroll {
     overflow: hidden;
@@ -261,19 +262,13 @@ body.no-scroll {
     transform: translateY(0);
 }
 
-
-
 .aboutMeApp:active {
     transform: scale(0.98);
 }
 
-
-
 .myBestWorksApp:active {
     transform: scale(0.98);
 }
-
-
 
 .contactMeApp:active {
     transform: scale(0.98);
@@ -287,8 +282,10 @@ body.no-scroll {
     position: relative;
     background: #1E5CD5;
     border-radius: 12px 12px 0 0;
-    overflow-y: auto; /* Enable vertical scrolling inside tab */
-    overflow-x: hidden; /* Hide horizontal overflow */
+    overflow-y: auto;
+    /* Enable vertical scrolling inside tab */
+    overflow-x: hidden;
+    /* Hide horizontal overflow */
 }
 
 /* Tab Container */
@@ -347,8 +344,8 @@ body.no-scroll {
     position: absolute;
     bottom: 0;
 
-    width: calc(100% - 16px);
-    left: 8px;
+    width: calc(100% - 8px);
+    left: 4px;
 
     height: 5px;
     background: linear-gradient(to bottom, #1E5CD5, #1941A5);
@@ -406,7 +403,7 @@ body.no-scroll {
 }
 
 .contact-me-tab::before {
-   background: linear-gradient(to bottom, #498DEA, #1E5CD5);
+    background: linear-gradient(to bottom, #498DEA, #1E5CD5);
 }
 
 .contact-me-tab::after {
@@ -590,7 +587,8 @@ body.no-scroll {
 /* Tab Header - Fixed height */
 .tab-header {
     width: 100%;
-    height: 40px; /* Fixed header height */
+    height: 40px;
+    /* Fixed header height */
     cursor: move;
     user-select: none;
     position: relative;
@@ -602,11 +600,14 @@ body.no-scroll {
 /* Tab Body - Contains everything below header */
 .tab-body {
     width: 100%;
-    height: calc(100% - 32px); /* Remaining space after header */
+    height: calc(100% - 32px);
+    /* Remaining space after header */
     display: flex;
     flex-direction: column;
-    background: #1E5CD5;;
-    border-radius: 0 0 0px 0px; /* outside border radius */
+    background: #1E5CD5;
+    ;
+    border-radius: 0 0 0px 0px;
+    /* outside border radius */
     overflow: hidden;
 }
 
@@ -623,93 +624,149 @@ body.no-scroll {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     pointer-events: none;
 }
+
 /* Navigation Bar (Windows XP style) */
 .nav-bar {
-width: calc(100% - 16px);
-margin: 0 8px;
-background: linear-gradient(180deg, #F3F3F3 0%, #E8E8E8 100%);
-border-bottom: 1px solid #B8B8B8;
-display: flex;
-flex-direction: column; /* CHANGED: stack lines vertically */
-padding: 4px 6px; /* CHANGED: added vertical padding */
-box-sizing: border-box;
-flex-shrink: 0;
-gap: 4px; /* ADDED: spacing between lines */
+    width: calc(100% - 8px);
+    margin: 0 4px;
+    background: #ecead8;
+    border-bottom: 1px solid #B8B8B8;
+    display: flex;
+    flex-direction: column;
+    /* CHANGED: stack lines vertically */
+    padding: 0px 0px;
+    /* CHANGED: added vertical padding */
+    box-sizing: border-box;
+    flex-shrink: 0;
+    /* ADDED: spacing between lines */
 }
 
-.nav-line { /* ADDED: new class for each line */
-display: flex;
-align-items: center;
-gap: 4px;
-width: 100%;
+.nav-line {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    width: 100%;
+    border-bottom: 1px solid #808080;
+    /* Dark border on bottom */
+    background: #ecead8;
 }
+
 
 .nav-btn {
-height: 24px;
-padding: 0 10px;
-background: linear-gradient(180deg, #FFFFFF 0%, #ECECEC 100%);
-border: 1px solid #ACA899;
-border-radius: 3px;
-font-size: 11px;
-font-family: 'Tahoma', sans-serif;
-cursor: pointer;
-color: #000;
-white-space: nowrap;
+    height: 24px;
+    padding: 0 10px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #ECECEC 100%);
+    border: none;
+    
+    
+    font-size: 11px;
+    font-family: 'Tahoma', sans-serif;
+    cursor: pointer;
+    color: #000;
+    white-space: nowrap;
 }
 
+.nav-btn1 {
+    height: 25px;
+    /* Fill the height of nav-line */
+    padding: 0px;
+    background: transparent;
+    border: none;
+    padding: 2px 6px;
+    border-radius: 0;
+    font-size: 13px;
+    font-family: 'Tahoma', sans-serif;
+    cursor: pointer;
+    color: #000;
+    white-space: nowrap;
+    margin: 0;
+    /* No margins */
+}
+
+.nav-btn1:hover {
+    background: #1560e8;
+    /* Blue background on hover */
+    color: white;
+    /* White text for contrast */
+}
+
+
+
 .nav-btn:hover {
-background: linear-gradient(180deg, #FEFEFE 0%, #F5F5F5 100%);
-border-color: #0066CC;
+    background: linear-gradient(180deg, #FEFEFE 0%, #F5F5F5 100%);
+    border-color: #0066CC;
 }
 
 .nav-btn:active {
-background: linear-gradient(180deg, #DEDEDE 0%, #F0F0F0 100%);
+    background: linear-gradient(180deg, #DEDEDE 0%, #F0F0F0 100%);
 }
 
 .address-bar {
-flex: 1;
-display: flex;
-align-items: center;
-gap: 4px;
-background: white;
-border: 1px solid #A0A0A0;
-padding: 2px 4px;
-border-radius: 2px;
-min-width: 0;
-height: 24px; /* ADDED: consistent height */
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: white;
+    border: 1px solid #A0A0A0;
+    padding: 2px 4px;
+    border-radius: 2px;
+    min-width: 0;
+    height: 24px;
+    /* ADDED: consistent height */
 }
 
 .address-label {
-font-size: 11px;
-font-family: 'Tahoma', sans-serif;
-color: #666;
-white-space: nowrap;
+    font-size: 11px;
+    font-family: 'Tahoma', sans-serif;
+    color: #666;
+    white-space: nowrap;
 }
 
 .address-bar input {
-flex: 1;
-border: none;
-outline: none;
-font-size: 11px;
-font-family: 'Tahoma', sans-serif;
-background: transparent;
-min-width: 0;
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 11px;
+    font-family: 'Tahoma', sans-serif;
+    background: transparent;
+    min-width: 0;
 }
 
-.go-btn, .view-btn {
-height: 24px;
-padding: 0 10px;
-background: linear-gradient(180deg, #FFFFFF 0%, #ECECEC 100%);
-border: 1px solid #ACA899;
-border-radius: 3px;
-font-size: 11px;
-font-family: 'Tahoma', sans-serif;
-cursor: pointer;
-white-space: nowrap;
+.go-btn,
+.view-btn {
+    height: 24px;
+    padding: 0 10px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #ECECEC 100%);
+    border: 1px solid #ACA899;
+    border-radius: 3px;
+    font-size: 11px;
+    font-family: 'Tahoma', sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
 }
 
 .spacer {
-flex: 1;
+    flex: 1; /* Takes up all available space */
+}
+
+.logo-box {
+    width: 40px;
+    height: 25px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0px;
+    border: none;
+    border-left: 1px solid #808080;
+    padding: 0;
+    cursor: pointer;
+}
+
+.windows-logo1 {
+    width: 25px; /* Adjust to fit nicely in the box */
+    height: auto;
+    object-fit: contain;
 }
 
 /* Tab Content - Scrollable area */
@@ -718,9 +775,10 @@ flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
     background: #bba633;
-    margin: 0 8px 8px 8px;
+    margin: 0 4px 4px 4px;
     border-radius: 0px;
 }
+
 /* XP Window Content */
 .xp-window {
     padding: 8px;
