@@ -794,7 +794,127 @@ body.no-scroll {
     min-height: 100%;
     
 }
+/* Windows XP Explorer Layout (Tab 2 ONLY) */
+.tab2 .xp-explorer-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: white;
+}
 
+/* Left Task Panel */
+.tab2 .xp-task-panel {
+    width: 200px;
+    background: linear-gradient(180deg, #D6DFF7 0%, #FFFFFF 100%);
+    border-right: 1px solid #B0B0B0;
+    padding: 10px;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.tab2 .task-section {
+    margin-bottom: 20px;
+}
+
+.tab2 .task-header {
+    font-family: 'Tahoma', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #003399;
+    margin-bottom: 8px;
+    padding: 4px 0;
+}
+
+.tab2 .task-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tab2 .task-link {
+    font-family: 'Tahoma', sans-serif;
+    font-size: 11px;
+    color: #003399;
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 2px;
+    display: block;
+    transition: background 0.2s ease;
+}
+
+.tab2 .task-link:hover {
+    background: rgba(0, 51, 153, 0.1);
+    text-decoration: underline;
+}
+
+.tab2 .task-link.active {
+    background: rgba(0, 51, 153, 0.2);
+    font-weight: bold;
+}
+
+.tab2 .task-details {
+    font-family: 'Tahoma', sans-serif;
+    font-size: 11px;
+    color: #000;
+    line-height: 1.6;
+}
+
+.tab2 .task-details p {
+    margin: 4px 0;
+}
+
+/* Right Files Area */
+.tab2 .xp-files-area {
+    flex: 1;
+    background: white;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+/* Projects Grid */
+.tab2 .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 25px 15px;
+    padding: 10px;
+}
+
+.tab2 .project-folder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.tab2 .project-folder:hover {
+    background: rgba(49, 106, 197, 0.1);
+}
+
+.tab2 .project-folder.selected {
+    background: rgba(49, 106, 197, 0.3);
+}
+
+.tab2 .folder-icon {
+    font-size: 48px;
+    margin-bottom: 6px;
+}
+
+.tab2 .folder-name {
+    font-family: 'Tahoma', sans-serif;
+    font-size: 11px;
+    color: #000;
+    text-align: center;
+    word-wrap: break-word;
+    max-width: 100px;
+}
+
+/* Make sure Tab 2 content background is white */
+.tab2 .tab-content {
+    background: white;
+}
 /* Contact Me tab - remove padding */
 .tab3 .xp-window {
     padding: 0;
