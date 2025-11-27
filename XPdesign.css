@@ -630,7 +630,7 @@ body.no-scroll {
     width: calc(100% - 8px);
     margin: 0 4px;
     background: #ecead8;
-    border-bottom: 1px solid #B8B8B8;
+    
     display: flex;
     flex-direction: column;
     /* CHANGED: stack lines vertically */
@@ -779,11 +779,95 @@ body.no-scroll {
     border-radius: 0px;
 }
 
+/* Contact Me tab specific styling */
+.tab3 .tab-content {
+    background: white;
+}
+
+.tab3 .nav-bar {
+    border-bottom: 1px solid #4584E8;
+}
+
 /* XP Window Content */
 .xp-window {
     padding: 8px;
     min-height: 100%;
+    
+}
+
+/* Contact Me tab - remove padding */
+.tab3 .xp-window {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
     box-sizing: border-box;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+/* Contact Me tab - left align everything */
+.tab3 .contact-form {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab3 .form-group {
+    text-align: left;
+    margin-left: 0;
+    margin-bottom: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.tab3 .form-group label,
+.tab3 .form-group input[type="text"],
+.tab3 .form-group input[type="email"] {
+    display: block;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    border: none !important;
+    outline: none !important;
+    font-size: 16px;
+}
+
+.tab3 .form-group:has(textarea) {
+    flex: 1;  /* Allow this form-group to grow */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;  /* Space for the absolute positioned buttons */
+}
+
+.tab3 .form-group textarea {
+    display: block;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    border: none !important;
+    outline: none !important;
+    resize: none;
+    flex: 1;  /* Fill available space in the form-group */
+    min-height: 120px;
+    font-size: 16px;
+}
+
+.tab3 .button-group {
+    display: flex;
+    justify-content: flex-end;  /* Keep this for right alignment within the group */
+    gap: 8px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;  /* Changed from left to right */
 }
 
 .xp-title {
@@ -946,13 +1030,11 @@ body.no-scroll {
 }
 
 /* Contact Form (Tab 3) */
-.contact-form {
-    max-width: 550px;
-    margin: 0 auto;
+.tab3 .contact-form {
+    width: 100%;
+    max-width: none;  /* Remove the max-width restriction */
+    box-sizing: border-box;
     background: white;
-    padding: 20px;
-    border: 1px solid #B8B8B8;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
@@ -961,10 +1043,9 @@ body.no-scroll {
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
     font-weight: 600;
     color: #000;
-    font-size: 11px;
+    font-size: 20px;
     font-family: 'Tahoma', sans-serif;
 }
 
