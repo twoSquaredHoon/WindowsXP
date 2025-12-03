@@ -106,6 +106,13 @@ document.addEventListener('touchend', dragEnd);
 
 function dragStart(e, container) {
     if (e.target.classList.contains('resize-handle')) return;
+    
+    // Only allow dragging if clicking on the tab-header or tab-title
+    const isHeaderClick = e.target.classList.contains('tab-header') || 
+                          e.target.classList.contains('tab-title') ||
+                          e.target.closest('.tab-header');
+    
+    if (!isHeaderClick) return;
 
     isDragging = true;
     currentContainer = container;

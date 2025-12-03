@@ -651,6 +651,44 @@ body.no-scroll {
     background: #ecead8;
 }
 
+/* Full bar height */
+.nav-line2 {
+    height: 32px;                 /* example height */
+    display: flex;
+    align-items: center;
+    padding: 1px 0;               /* ← creates 1px top and bottom gap */
+    box-sizing: border-box;
+}
+
+/* Buttons fill the height */
+.nav-line2 button {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: none;
+    padding: 0 6px;  /* spacing left/right */
+    margin: 0;
+    box-shadow: none;
+}
+
+/* SVGs scale to match button height */
+.nav-line2 button svg {
+    height: 70%;                  /* adjust if needed */
+    width: auto;
+    display: block;
+}
+
+.nav-line2 button:hover {
+    background: transparent !important;
+    border: 1px solid #7aa3e5;   /* single blue border */
+    border-radius: 4px;          /* rounded corners */
+    outline: none !important;    /* remove white border */
+}
+
+
 
 .nav-btn {
     height: 24px;
@@ -878,6 +916,7 @@ body.no-scroll {
     gap: 25px 15px;
     padding: 10px;
 }
+
 
 .tab2 .project-folder {
     display: flex;
