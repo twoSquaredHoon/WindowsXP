@@ -832,128 +832,137 @@ body.no-scroll {
     min-height: 100%;
     
 }
-/* Windows XP Explorer Layout (Tab 2 ONLY) */
-.tab2 .xp-explorer-layout {
-    display: flex;
+/* ===========================
+   TAB 2 — WINDOWS XP PROJECTS
+   =========================== */
+
+.tab2 .tab-content {
+    background: white;
+    height: 100%;
+    padding: 0;
+}
+
+/* XP Window Wrapper */
+.tab2 .xp-window {
     width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #9a9a9a;
+}
+
+/* Outer layout (Left sidebar + Right content) */
+.tab2 .projects-container {
+    display: flex;
     height: 100%;
     background: white;
 }
 
-/* Left Task Panel */
-.tab2 .xp-task-panel {
+/* =======================
+   LEFT SIDEBAR
+   ======================= */
+
+.tab2 .projects-sidebar {
     width: 200px;
     background: linear-gradient(180deg, #D6DFF7 0%, #FFFFFF 100%);
     border-right: 1px solid #B0B0B0;
-    padding: 10px;
-    overflow-y: auto;
+    padding: 12px;
     flex-shrink: 0;
+    overflow-y: auto;
 }
 
-.tab2 .task-section {
-    margin-bottom: 20px;
-}
-
-.tab2 .task-header {
-    font-family: 'Tahoma', sans-serif;
+.tab2 .sidebar-header {
+    font-family: Tahoma, sans-serif;
     font-size: 12px;
     font-weight: bold;
     color: #003399;
-    margin-bottom: 8px;
-    padding: 4px 0;
+    margin-bottom: 12px;
 }
-
-.tab2 .task-links {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.tab2 .task-link {
-    font-family: 'Tahoma', sans-serif;
-    font-size: 11px;
-    color: #003399;
-    text-decoration: none;
-    padding: 4px 8px;
-    border-radius: 2px;
-    display: block;
-    transition: background 0.2s ease;
-}
-
-.tab2 .task-link:hover {
-    background: rgba(0, 51, 153, 0.1);
-    text-decoration: underline;
-}
-
-.tab2 .task-link.active {
-    background: rgba(0, 51, 153, 0.2);
-    font-weight: bold;
-}
-
-.tab2 .task-details {
-    font-family: 'Tahoma', sans-serif;
-    font-size: 11px;
-    color: #000;
-    line-height: 1.6;
-}
-
-.tab2 .task-details p {
-    margin: 4px 0;
-}
-
-/* Right Files Area */
-.tab2 .xp-files-area {
-    flex: 1;
-    background: white;
-    padding: 15px;
-    overflow-y: auto;
-}
-
-/* Projects Grid */
-.tab2 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 25px 15px;
-    padding: 10px;
-}
-
 
 .tab2 .project-folder {
+    padding: 8px 4px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     cursor: pointer;
-    padding: 8px;
     border-radius: 3px;
-    transition: background 0.2s ease;
+    transition: background 0.15s;
 }
 
 .tab2 .project-folder:hover {
-    background: rgba(49, 106, 197, 0.1);
+    background: rgba(0, 51, 153, 0.15);
 }
 
-.tab2 .project-folder.selected {
-    background: rgba(49, 106, 197, 0.3);
+.tab2 .folder-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .tab2 .folder-icon {
-    font-size: 48px;
-    margin-bottom: 6px;
+    font-size: 18px;
 }
 
 .tab2 .folder-name {
-    font-family: 'Tahoma', sans-serif;
-    font-size: 11px;
-    color: #000;
-    text-align: center;
-    word-wrap: break-word;
-    max-width: 100px;
+    font-family: Tahoma, sans-serif;
+    font-size: 12px;
+    color: #003399;
 }
 
-/* Make sure Tab 2 content background is white */
-.tab2 .tab-content {
+
+/* =======================
+   RIGHT PANEL (PROJECTS)
+   ======================= */
+
+.tab2 .projects-content {
+    flex: 1;
+    padding: 20px;
     background: white;
+    overflow-y: auto;
 }
+
+.tab2 .projects-header {
+    margin-bottom: 20px;
+}
+
+.tab2 .projects-title {
+    font-family: Tahoma, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #003399;
+}
+
+/* Projects grid items */
+.tab2 .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 25px 20px;
+}
+
+.tab2 .project-item {
+    text-align: center;
+    cursor: pointer;
+    padding: 10px 5px;
+    border-radius: 4px;
+    transition: background 0.15s;
+}
+
+.tab2 .project-item:hover {
+    background: rgba(49, 106, 197, 0.15);
+}
+
+.tab2 .project-icon {
+    font-size: 42px;
+    margin-bottom: 8px;
+}
+
+.tab2 .project-name {
+    font-family: Tahoma, sans-serif;
+    font-size: 12px;
+    color: black;
+    word-wrap: break-word;
+}
+
 /* Contact Me tab - remove padding */
 .tab3 .xp-window {
     padding: 0;
