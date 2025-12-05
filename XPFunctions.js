@@ -116,26 +116,27 @@ containers.forEach(container => {
         bringToFront(container);
     });
 
-    // Close button
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            container.style.opacity = '0';
-            setTimeout(() => {
-                container.style.display = 'none';
-            }, 300);
+    // MINIMIZE BUTTON
+    const minimizeBtn = container.querySelector('.minimize-btn');
+    if (minimizeBtn) {
+        minimizeBtn.addEventListener('click', () => {
+            minimizeTab(container);
+            const visibleTabs = document.querySelectorAll('.tab-container[style*="display: block"]');
+            if (visibleTabs.length === 0) document.body.classList.remove('no-scroll');
         });
     }
 
-    // Drag functionality
+    // DRAG
     container.addEventListener('mousedown', (e) => dragStart(e, container));
     container.addEventListener('touchstart', (e) => handleTouchStart(e, container));
 
-    // Resize functionality
+    // RESIZE
     handles.forEach(handle => {
         handle.addEventListener('mousedown', (e) => resizeStart(e, container));
         handle.addEventListener('touchstart', (e) => resizeTouchStart(e, container));
     });
 });
+
 
 // Global mouse/touch listeners
 document.addEventListener('mousemove', drag);
@@ -309,45 +310,43 @@ document.addEventListener('click', (e) => {
 });
 
 
-// Open tab functions - updated to bring to front
 function openTab(tabClass) {
     const tab = document.querySelector(`.${tabClass}`);
-    if (tab) {
-        tab.style.display = 'block';
-        tab.style.opacity = '0';
-        bringToFront(tab);
-        setTimeout(() => {
-            tab.style.opacity = '1';
-        }, 10);
-        
-        // Disable background scrolling
-        document.body.classList.add('no-scroll');
-    }
+    if (!tab) return;
+
+    tab.style.display = "block";
+    tab.style.opacity = "0";
+    bringToFront(tab);
+
+    const title = tab.querySelector(".tab-title")?.textContent || "Window";
+    createTaskbarButton(tab, title);   // <-- IMPORTANT
+
+    setTimeout(() => { tab.style.opacity = "1"; }, 10);
+    document.body.classList.add("no-scroll");
 }
 
+
+
 containers.forEach(container => {
-    const tabHeader = container.querySelector('.tab-header');
-    const handles = container.querySelectorAll('.resize-handle');
     const closeBtn = container.querySelector('.close-btn');
 
-    // ... existing code ...
-
-    // Close button - updated to re-enable scrolling if all tabs are closed
     if (closeBtn) {
         closeBtn.addEventListener('click', () => {
-            container.style.opacity = '0';
+            container.style.opacity = "0";
+
             setTimeout(() => {
-                container.style.display = 'none';
-                
-                // Re-enable scrolling only if all tabs are closed
+                container.style.display = "none";
+                removeTaskbarButton(container);   // <-- remove button from taskbar
+
                 const visibleTabs = document.querySelectorAll('.tab-container[style*="display: block"]');
                 if (visibleTabs.length === 0) {
                     document.body.classList.remove('no-scroll');
                 }
-            }, 300);
+            }, 200);
         });
     }
 });
+
 
 // Add event listeners after DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function () {
@@ -363,3 +362,48 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 updateSizeDisplay();
+
+function createTaskbarButton(container, title) {
+    const taskbar = document.getElementById("taskbar-windows");
+    
+    // If button already exists, do nothing
+    if (container.taskbarButton) return;
+
+    const btn = document.createElement("div");
+    btn.classList.add("taskbar-btn");
+    btn.textContent = title;
+
+    // Clicking taskbar restores window
+    btn.addEventListener("click", () => {
+        if (container.style.display === "none") {
+            // Restore window
+            container.style.display = "block";
+            setTimeout(() => container.style.opacity = "1", 10);
+            bringToFront(container);
+        } else {
+            // Minimize window
+            minimizeTab(container);
+        }
+    });
+
+    taskbar.appendChild(btn);
+    container.taskbarButton = btn; // Link the button to the window
+}
+
+function removeTaskbarButton(container) {
+    if (container.taskbarButton) {
+        container.taskbarButton.remove();
+        container.taskbarButton = null;
+    }
+}
+
+function minimizeTab(container) {
+    container.style.opacity = "0";
+
+    setTimeout(() => {
+        container.style.display = "none";
+
+        const visibleTabs = document.querySelectorAll('.tab-container[style*="display: block"]');
+        if (visibleTabs.length === 0) document.body.classList.remove('no-scroll');
+    }, 200);
+}

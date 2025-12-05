@@ -321,10 +321,11 @@ body.no-scroll {
     font-size: 32px;
     font-weight: 400;
 }
-
 /* ============== START MENU ============== */
 
-.start-menu.hidden {
+/* Start menu hidden state */
+.start-menu.hidden,
+#xp-start-menu.hidden {
     display: none;
 }
 
@@ -334,8 +335,9 @@ body.no-scroll {
     left: 0;
     width: 420px;
     height: 480px;
+
     display: flex;
-    flex-direction: column;
+    flex-direction: row;   /* <-- XP layout: left panel + right panel */
 
     background: #245EDC;
     border: 2px solid #0C3C8C;
@@ -343,10 +345,7 @@ body.no-scroll {
 
     box-shadow: 3px -3px 10px rgba(0,0,0,0.4);
     z-index: 5000;
-}
-
-#xp-start-menu.hidden {
-    display: none;
+    overflow: hidden;
 }
 
 /* Left Panel */
@@ -415,16 +414,23 @@ body.no-scroll {
     margin: 6px 0;
 }
 
-/* Bottom buttons */
+/* Bottom Buttons */
 .start-menu-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
     display: flex;
     justify-content: space-between;
+
     padding: 6px;
     background: #245EDC;
     border-top: 2px solid #1b4aa0;
 }
 
-.logoff-btn, .shutdown-btn {
+.logoff-btn,
+.shutdown-btn {
     padding: 4px 10px;
     font-family: Tahoma;
     font-size: 12px;
@@ -433,7 +439,8 @@ body.no-scroll {
     background: linear-gradient(to bottom, #ffffff, #d7d7d7);
 }
 
-.logoff-btn:hover, .shutdown-btn:hover {
+.logoff-btn:hover,
+.shutdown-btn:hover {
     background: #ffffff;
 }
 
@@ -1061,6 +1068,21 @@ body.no-scroll {
     min-height: 100%;
     
 }
+
+/* TAB 1 — About Me content background */
+.tab1 .tab-content {
+    background: black !important;
+    display: flex;
+    justify-content: center;   /* center horizontally */
+    align-items: center;       /* center vertically */
+}
+
+/* TAB 1 — About Me photo sizing */
+.tab1 .about-photo {
+    width: 750px;       /* fixed width */
+    max-width: 750px;   /* prevents scaling larger */
+    height: auto;       /* keeps aspect ratio */
+}
 /* ===========================
    TAB 2 — WINDOWS XP PROJECTS
    =========================== */
@@ -1531,4 +1553,35 @@ body.no-scroll {
 .tab-container.tab3 {
     width: 650px;
     height: 500px;
+}
+
+#taskbar-windows {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+    padding-left: 150px; /* Leaves space for Start button */
+}
+
+.taskbar-button {
+    height: 28px;
+    padding: 0 12px;
+    background: linear-gradient(180deg, #fff 0%, #dcdcdc 100%);
+    border: 1px solid #9a9a9a;
+    border-radius: 3px;
+    font-family: Tahoma, sans-serif;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: inset 1px 1px 0 rgba(255,255,255,0.6);
+}
+
+.taskbar-button:hover {
+    background: linear-gradient(180deg, #fff 0%, #eaeaea 100%);
+}
+
+.taskbar-button.active {
+    background: linear-gradient(180deg, #cde2ff 0%, #9bc3ff 100%);
+    border-color: #4a76d4;
 }
