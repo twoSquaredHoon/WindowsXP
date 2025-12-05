@@ -91,6 +91,33 @@ const containers = document.querySelectorAll('.tab-container');
 const MIN_WIDTH = 200;
 const MIN_HEIGHT = 150;
 
+
+function toggleFullscreen(container) {
+    // ENTER fullscreen
+    if (!container.classList.contains("fullscreen")) {
+        const rect = container.getBoundingClientRect();
+
+        // Save current position/size
+        container.dataset.prevLeft = rect.left + "px";
+        container.dataset.prevTop = rect.top + "px";
+        container.dataset.prevWidth = rect.width + "px";
+        container.dataset.prevHeight = rect.height + "px";
+
+        container.classList.add("fullscreen");
+        bringToFront(container);
+    } 
+    // EXIT fullscreen
+    else {
+        container.classList.remove("fullscreen");
+
+        container.style.left = container.dataset.prevLeft;
+        container.style.top = container.dataset.prevTop;
+        container.style.width = container.dataset.prevWidth;
+        container.style.height = container.dataset.prevHeight;
+    }
+}
+
+
 let isDragging = false;
 let isResizing = false;
 let currentHandle = null;
@@ -135,7 +162,13 @@ containers.forEach(container => {
         handle.addEventListener('mousedown', (e) => resizeStart(e, container));
         handle.addEventListener('touchstart', (e) => resizeTouchStart(e, container));
     });
+
+    const fullscreenBtn = container.querySelector('.fullscreen-btn');
+    if (fullscreenBtn) {
+        fullscreenBtn.addEventListener('click', () => toggleFullscreen(container));
+    }
 });
+
 
 
 // Global mouse/touch listeners
@@ -145,6 +178,7 @@ document.addEventListener('touchmove', handleTouchMove);
 document.addEventListener('touchend', dragEnd);
 
 function dragStart(e, container) {
+    if (container.classList.contains('fullscreen')) return;
     if (e.target.classList.contains('resize-handle')) return;
     
     // Only allow dragging if clicking on the tab-header or tab-title
@@ -203,6 +237,7 @@ function handleTouchMove(e) {
 }
 
 function resizeStart(e, container) {
+    if (container.classList.contains('fullscreen')) return;
     e.stopPropagation();
     isResizing = true;
     currentContainer = container;
@@ -325,8 +360,6 @@ function openTab(tabClass) {
     document.body.classList.add("no-scroll");
 }
 
-
-
 containers.forEach(container => {
     const closeBtn = container.querySelector('.close-btn');
 
@@ -336,7 +369,7 @@ containers.forEach(container => {
 
             setTimeout(() => {
                 container.style.display = "none";
-                removeTaskbarButton(container);   // <-- remove button from taskbar
+                removeTaskbarButton(container);
 
                 const visibleTabs = document.querySelectorAll('.tab-container[style*="display: block"]');
                 if (visibleTabs.length === 0) {
@@ -407,3 +440,15 @@ function minimizeTab(container) {
         if (visibleTabs.length === 0) document.body.classList.remove('no-scroll');
     }, 200);
 }
+
+// Show popup after 7 seconds
+setTimeout(() => {
+    document.querySelector('.virus-popup').classList.remove('hidden');
+}, 7000);
+
+// Close button hides popup
+document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("virus-close-btn")) {
+        document.querySelector('.virus-popup').classList.add('hidden');
+    }
+});

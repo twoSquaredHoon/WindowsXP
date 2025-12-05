@@ -204,8 +204,12 @@ body.no-scroll {
     overflow: visible;
 }
 
+/* ============================
+   TASKBAR MENUBAR ICON BUTTONS
+============================ */
+
 .menubar {
-    width: 217px;
+    width: 230px;
     height: 38px;
     border: 1px solid #056399;
     background: linear-gradient(180deg, #20AFF8 0%, #0F8EE5 20%, #0391F1 50.48%, #0F8EE5 80%, #20AFF8 100%);
@@ -213,6 +217,78 @@ body.no-scroll {
     bottom: 0px;
     right: 0px;
     z-index: 2001;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* icons + clock flow horizontally */
+    gap: 6px;
+    padding: 0 8px;
+}
+
+/* MINI-ICONS (Security / Language / Moon / TV) */
+.menu-icon-btn {
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.55);
+    background: rgba(255,255,255,0.15);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    box-shadow: inset 1px 1px 0 rgba(255,255,255,0.4);
+    font-size: 17px; /* For emoji icons */
+}
+
+.menu-icon-btn img {
+    width: 18px;        /* fits inside 26px button */
+    height: 18px;       /* keep square proportion */
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+}
+
+.menu-icon-btn:hover {
+    background: rgba(255,255,255,0.28);
+}
+
+.ampm,
+.clock {
+    position: static !important;  /* <-- CRITICAL FIX */
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    line-height: 1;
+}
+
+.ampm {
+    position: fixed;
+    bottom: 10px;
+    right: 90px;
+    color: #FFF;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-family: DungGeunMo, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.clock {
+    position: fixed;
+    color: #FFF;
+    bottom: 5x;
+    right: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-family: 'Windows XP Tahoma', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.hidden {
+    display: none !important;
 }
 
 .startButton {
@@ -298,29 +374,6 @@ body.no-scroll {
     z-index: 2002;
 }
 
-.ampm {
-    position: fixed;
-    bottom: 10px;
-    right: 90px;
-    color: #FFF;
-    text-align: center;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    font-family: DungGeunMo, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-}
-
-.clock {
-    position: fixed;
-    color: #FFF;
-    bottom: 5x;
-    right: 20px;
-    text-align: center;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    font-family: 'Windows XP Tahoma', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 32px;
-    font-weight: 400;
-}
 /* ============== START MENU ============== */
 
 /* Start menu hidden state */
@@ -1069,20 +1122,60 @@ body.no-scroll {
     
 }
 
-/* TAB 1 — About Me content background */
-.tab1 .tab-content {
-    background: black !important;
+/* TAB 1 WRAPPER MUST CENTER CONTENT */
+.tab1 .scrollable-wrapper {
+    width: 100%;
     display: flex;
-    justify-content: center;   /* center horizontally */
-    align-items: center;       /* center vertically */
+    justify-content: center;   /* Center horizontally */
+    align-items: center;       /* Center vertically if there's height */
 }
 
-/* TAB 1 — About Me photo sizing */
-.tab1 .about-photo {
-    width: 750px;       /* fixed width */
-    max-width: 750px;   /* prevents scaling larger */
-    height: auto;       /* keeps aspect ratio */
+/* TAB 1 — Use relative positioning so the image can anchor inside */
+.tab1 .tab-content {
+    background: black !important;
+    position: relative;
+    overflow: hidden;  /* Avoid scrollbars if you want a clean view */
 }
+
+
+
+/* TAB 1 IMAGE — bottom-right + rounded top-left corner + fade-out edges */
+.tab1 .about-photo-wrapper {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+
+    max-height: 450px;
+    width: auto;
+
+    
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* WRAPPER — controls rounding + fade at TOP LEFT ONLY */
+.tab1 .about-photo-wrapper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    width: 90%;
+    max-width: 750px;
+
+    overflow: hidden;
+}
+
+/* IMAGE INSIDE WRAPPER */
+.tab1 .about-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+
+
 /* ===========================
    TAB 2 — WINDOWS XP PROJECTS
    =========================== */
@@ -1584,4 +1677,54 @@ body.no-scroll {
 .taskbar-button.active {
     background: linear-gradient(180deg, #cde2ff 0%, #9bc3ff 100%);
     border-color: #4a76d4;
+}
+
+.tab-container.fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: calc(100vh - 40px) !important; /* leaves space for taskbar */
+    border-radius: 0 !important;
+}
+
+/* VIRUS POPUP WRAPPER */
+.virus-popup {
+    position: fixed;
+    bottom: 40px;
+    right: 200px;
+    z-index: 9999999999 !important;
+    pointer-events: auto;
+    display: block;
+    opacity: 1;
+}
+
+/* Hide helper */
+.hidden {
+    display: none !important;
+}
+
+/* POPUP IMAGE */
+.virus-popup img {
+    width: 240px;
+    height: auto;
+    display: block;
+    image-rendering: crisp-edges;
+}
+
+/* INVISIBLE CLOSE BUTTON (top-right corner of popup) */
+.virus-close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    
+    width: 24px;
+    height: 24px;
+
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    z-index: 10000000000;
+    opacity: 0;          /* INVISIBLE */
 }
