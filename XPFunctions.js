@@ -1,3 +1,71 @@
+document.addEventListener("dragstart", e => e.preventDefault());
+
+// Disable dragging but allow clicking & typing
+document.addEventListener("mousedown", e => {
+    const tag = e.target.tagName.toLowerCase();
+    if (tag !== "input" && tag !== "textarea" && tag !== "button") {
+        e.preventDefault();
+    }
+});
+
+window.addEventListener("load", () => {
+    const boot = document.getElementById("xp-boot-screen");
+    const welcome = document.getElementById("xp-welcome-screen");
+
+    // 1. Boot screen stays for realism
+    setTimeout(() => {
+
+        // INSTANT CUT (NO FADE)
+        boot.remove();
+
+        // Show welcome screen immediately
+        welcome.style.opacity = "1";
+        welcome.style.pointerEvents = "auto";
+
+        // 2. After welcome shows, fade OUT to desktop
+        setTimeout(() => {
+            welcome.style.opacity = "0";
+
+            setTimeout(() => {
+                welcome.remove();
+            }, 900);
+
+        }, 1600); // duration of welcome screen
+
+    }, 2000); // duration of boot screen
+});
+
+window.addEventListener("load", () => {
+    const boot = document.getElementById("xp-boot-screen");
+    const welcome = document.getElementById("xp-welcome-screen");
+
+    // 1. Boot screen stays for realism
+    setTimeout(() => {
+        boot.style.opacity = "0";
+
+        // 2. After fading boot, show welcome screen
+        setTimeout(() => {
+            boot.remove();
+
+            welcome.style.opacity = "1";
+            welcome.style.pointerEvents = "auto";
+
+            // 3. After welcome appears, fade it out
+            setTimeout(() => {
+                welcome.style.opacity = "0";
+
+                setTimeout(() => {
+                    welcome.remove();
+                }, 900);
+
+            }, 1600); // how long welcome stays visible
+
+        }, 900);
+
+    }, 2000); // boot duration
+});
+
+
 let virtualScroll = 0;
 
 window.addEventListener('wheel', (e) => {

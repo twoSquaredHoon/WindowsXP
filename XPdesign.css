@@ -1,4 +1,118 @@
-/* disable zoom and scroll, If i were to add scroll you know the classic selecction*/
+/* Disable selecting text */
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*
+   WINDOWS XP BOOT SCREEN
+*/
+
+#xp-boot-screen {
+    position: fixed;
+    inset: 0;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999999;
+    opacity: 1;
+    transition: none !important;
+}
+
+.xp-boot-center {
+    text-align: center;
+}
+
+.xp-boot-logo {
+    width: 420px;   /* similar to real XP boot screen scale */
+    margin-bottom: 40px;
+}
+
+/* Outer loading bar */
+.xp-boot-loading-bar {
+    width: 260px;
+    height: 18px;
+    border: 2px solid #3f3f3f;
+    border-radius: 12px;
+    background: #0d0d0d;
+    margin: 0 auto;
+    padding: 2px;
+    box-shadow: inset 0 0 4px #000;
+}
+
+/* Scrolling XP-style progress indicator */
+.xp-boot-loading-fill {
+    width: 60px;
+    height: 100%;
+    background: linear-gradient(90deg,
+        #003399 0%,
+        #0066ff 50%,
+        #003399 100%
+    );
+    border-radius: 6px;
+
+    animation: xp-scroll 1.4s linear infinite;
+}
+
+@keyframes xp-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(200px); }
+}
+
+.xp-boot-copyright {
+    color: white;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+    opacity: 0.7;
+    margin-top: 18px;
+}
+
+
+
+
+/* ===========================
+   WINDOWS XP WELCOME SCREEN
+   =========================== */
+
+#xp-welcome-screen {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(to bottom, 
+        #0037b3 0%,          /* top blue bar */
+        #0037b3 12%,         /* solid bar height */
+        #5b8fed 12%,         /* start panel */
+        #6ea2f8 50%,         /* middle */
+        #5b8fed 88%,         /* end panel */
+        #1d3f9b 88%,         /* bottom bar */
+        #1d3f9b 100%         /* bottom */
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    z-index: 999998;
+}
+
+/* Perfect XP Welcome Text Position */
+.xp-welcome-text {
+    position: absolute;
+    top: 50%;
+    left: 55%;  /* shift slightly to the right like XP */
+    transform: translate(-50%, -50%);
+
+    font-family: Tahoma, sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    font-style: italic;
+    color: white;
+
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+
 
 .wallpaper {
     position: relative;
