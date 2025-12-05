@@ -322,6 +322,121 @@ body.no-scroll {
     font-weight: 400;
 }
 
+/* ============== START MENU ============== */
+
+.start-menu.hidden {
+    display: none;
+}
+
+#xp-start-menu {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    width: 420px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+
+    background: #245EDC;
+    border: 2px solid #0C3C8C;
+    border-radius: 6px 6px 0 0;
+
+    box-shadow: 3px -3px 10px rgba(0,0,0,0.4);
+    z-index: 5000;
+}
+
+#xp-start-menu.hidden {
+    display: none;
+}
+
+/* Left Panel */
+.start-menu-left {
+    width: 200px;
+    background: white;
+    padding: 6px;
+    border-right: 1px solid #9a9a9a;
+    overflow-y: auto;
+}
+
+.start-menu-section .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 4px 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: Tahoma;
+    font-size: 12px;
+}
+
+.start-menu-section .menu-item:hover {
+    background: #e5f1ff;
+}
+
+.start-menu-section img {
+    width: 22px;
+    margin-right: 6px;
+}
+
+/* All Programs */
+.start-menu-allprograms {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px;
+    background: #e5e5e5;
+    border-top: 1px solid #c0c0c0;
+    cursor: pointer;
+    align-items: center;
+}
+
+.start-menu-allprograms:hover {
+    background: #d8d8d8;
+}
+
+/* Right Panel */
+.start-menu-right {
+    flex: 1;
+    padding: 10px;
+    background: linear-gradient(to bottom, #ffffff, #d5e2ff);
+}
+
+.start-menu-right .menu-item {
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.start-menu-right .menu-item:hover {
+    background: rgba(99,150,255,0.3);
+}
+
+.divider {
+    height: 1px;
+    background: #9a9a9a;
+    margin: 6px 0;
+}
+
+/* Bottom buttons */
+.start-menu-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px;
+    background: #245EDC;
+    border-top: 2px solid #1b4aa0;
+}
+
+.logoff-btn, .shutdown-btn {
+    padding: 4px 10px;
+    font-family: Tahoma;
+    font-size: 12px;
+    border-radius: 3px;
+    border: 1px solid #0c3c8c;
+    background: linear-gradient(to bottom, #ffffff, #d7d7d7);
+}
+
+.logoff-btn:hover, .shutdown-btn:hover {
+    background: #ffffff;
+}
+
 .aboutMeApp {
     position: fixed;
     width: 90px;
@@ -1066,8 +1181,11 @@ body.no-scroll {
 }
 
 .tab2 .project-icon {
-    font-size: 42px;
-    margin-bottom: 8px;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    margin: 0 auto 8px auto;
+    display: block;
 }
 
 .tab2 .project-name {
@@ -1251,11 +1369,10 @@ body.no-scroll {
     box-shadow: 0 2px 8px rgba(0, 102, 204, 0.3);
 }
 
-.folder-icon {
-    font-size: 40px;
-    text-align: center;
-    padding: 8px;
-    background: linear-gradient(180deg, #F3F3F3 0%, #E8E8E8 100%);
+.tab2 .folder-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
 }
 
 .folder-content {

@@ -122,9 +122,9 @@
         </div>
 
         <!-- XP Welcome Screen -->
-<div id="xp-welcome-screen">
-    <div class="xp-welcome-text">새로운 시작</div>
-</div>
+        <div id="xp-welcome-screen">
+            <div class="xp-welcome-text">새로운 시작</div>
+        </div>
 
 
 
@@ -277,6 +277,58 @@
             </svg>
             <span class="startButton-text">시작</span>
         </button>
+
+
+        <!-- Start menu -->
+        <div id="xp-start-menu" class="start-menu hidden">
+            <div class="start-menu-left">
+                <div class="start-menu-section">
+                    <div class="menu-item">
+                        <img src="icons/ie.png">
+                        <span>Internet Explorer</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="icons/email.png">
+                        <span>My Best Works</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="icons/wmp.png">
+                        <span>Contact Me</span>
+                    </div>
+                </div>
+
+                <div class="start-menu-allprograms">
+                    <span>All Programs</span>
+                    <div class="arrow">▶</div>
+                </div>
+            </div>
+
+            <div class="start-menu-right">
+                <div class="menu-item">My Documents</div>
+                <div class="menu-item">My Recent Documents</div>
+                <div class="menu-item">My Pictures</div>
+                <div class="menu-item">My Music</div>
+                <div class="menu-item">My Computer</div>
+
+                <div class="divider"></div>
+
+                <div class="menu-item">Control Panel</div>
+                <div class="menu-item">Connect To</div>
+                <div class="menu-item">Printers and Faxes</div>
+
+                <div class="divider"></div>
+
+                <div class="menu-item">Help and Support</div>
+                <div class="menu-item">Search</div>
+                <div class="menu-item">Run...</div>
+            </div>
+
+            <div class="start-menu-bottom">
+                <button class="logoff-btn">Log Off</button>
+                <button class="shutdown-btn">Shut Down</button>
+            </div>
+        </div>
+
 
         <!-- IE Icon -->
         <button type="button" class="internetExplorerButton">
@@ -1272,30 +1324,31 @@
                         <div class="projects-container">
 
                             <!-- LEFT PANEL (3 categories) -->
-                            <div class="projects-sidebar">
-                                <div class="sidebar-header">My Projects</div>
+<div class="projects-sidebar">
+    <div class="sidebar-header">My Projects</div>
 
-                                <div class="project-folder">
-                                    <div class="folder-header">
-                                        <span class="folder-icon">📁</span>
-                                        <span class="folder-name">Web Development</span>
-                                    </div>
-                                </div>
+    <div class="project-folder">
+        <div class="folder-header">
+            <img class="folder-icon" src="assets/icons/Folder%20Closed.png">
+            <span class="folder-name">Web Development</span>
+        </div>
+    </div>
 
-                                <div class="project-folder">
-                                    <div class="folder-header">
-                                        <span class="folder-icon">📁</span>
-                                        <span class="folder-name">Game Development</span>
-                                    </div>
-                                </div>
+    <div class="project-folder">
+        <div class="folder-header">
+            <img class="folder-icon" src="assets/icons/Folder%20Closed.png">
+            <span class="folder-name">Game Development</span>
+        </div>
+    </div>
 
-                                <div class="project-folder">
-                                    <div class="folder-header">
-                                        <span class="folder-icon">📁</span>
-                                        <span class="folder-name">UI/UX Design</span>
-                                    </div>
-                                </div>
-                            </div>
+    <div class="project-folder">
+        <div class="folder-header">
+            <img class="folder-icon" src="assets/icons/Folder%20Closed.png">
+            <span class="folder-name">UI/UX Design</span>
+        </div>
+    </div>
+</div>
+
 
                             <!-- RIGHT PANEL (4 projects) -->
                             <div class="projects-content">
@@ -1306,27 +1359,28 @@
                                 <div class="projects-grid">
 
                                     <div class="project-item">
-                                        <div class="project-icon">📁</div>
+                                        <img class="project-icon" src="assets/icons/Folder%20Closed.png">
                                         <div class="project-name">Personal Website</div>
                                     </div>
 
                                     <div class="project-item">
-                                        <div class="project-icon">📁</div>
+                                        <img class="project-icon" src="assets/icons/Folder%20Closed.png">
                                         <div class="project-name">Brocking Bad</div>
                                     </div>
 
                                     <div class="project-item">
-                                        <div class="project-icon">📁</div>
+                                        <img class="project-icon" src="assets/icons/Folder%20Closed.png">
                                         <div class="project-name">UI Case Study</div>
                                     </div>
 
                                     <div class="project-item">
-                                        <div class="project-icon">📁</div>
+                                        <img class="project-icon" src="assets/icons/Folder%20Closed.png">
                                         <div class="project-name">Mobile App Prototype</div>
                                     </div>
 
                                 </div>
                             </div>
+
 
                         </div>
 
@@ -1352,7 +1406,7 @@
 
 
 
-        
+
 
         <!-- Tab 3: Contact Me -->
         <div class="tab-container tab3" style="display: none;">

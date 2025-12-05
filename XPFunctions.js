@@ -35,67 +35,38 @@ window.addEventListener("load", () => {
     }, 2000); // duration of boot screen
 });
 
-window.addEventListener("load", () => {
-    const boot = document.getElementById("xp-boot-screen");
-    const welcome = document.getElementById("xp-welcome-screen");
-
-    // 1. Boot screen stays for realism
-    setTimeout(() => {
-        boot.style.opacity = "0";
-
-        // 2. After fading boot, show welcome screen
-        setTimeout(() => {
-            boot.remove();
-
-            welcome.style.opacity = "1";
-            welcome.style.pointerEvents = "auto";
-
-            // 3. After welcome appears, fade it out
-            setTimeout(() => {
-                welcome.style.opacity = "0";
-
-                setTimeout(() => {
-                    welcome.remove();
-                }, 900);
-
-            }, 1600); // how long welcome stays visible
-
-        }, 900);
-
-    }, 2000); // boot duration
-});
-
 
 let virtualScroll = 0;
 
 window.addEventListener('wheel', (e) => {
-    // Check if any tabs are open
     const openTabs = document.querySelectorAll('.tab-container[style*="display: block"]');
-    
-    // If tabs are open, don't scroll the background
-    if (openTabs.length > 0) {
+    const startMenu = document.getElementById('xp-start-menu');
+
+    // Stop scrolling when tabs OR start menu are open
+    if (openTabs.length > 0 || !startMenu.classList.contains('hidden')) {
         return;
     }
-    
+
     const ieIcon = document.querySelector('.aboutMeApp');
     const bestWorkIcon = document.querySelector('.myBestWorksApp');
     const contactMeIcon = document.querySelector('.contactMeApp');
-    
+
     virtualScroll += e.deltaY;
     virtualScroll = Math.max(0, Math.min(virtualScroll, 400));
 
     if (virtualScroll > 150) {
         document.body.classList.add('scrolled');
-        if (ieIcon) ieIcon.classList.add('scrolled');
-        if (bestWorkIcon) bestWorkIcon.classList.add('scrolled');
-        if (contactMeIcon) contactMeIcon.classList.add('scrolled');
+        ieIcon?.classList.add('scrolled');
+        bestWorkIcon?.classList.add('scrolled');
+        contactMeIcon?.classList.add('scrolled');
     } else {
         document.body.classList.remove('scrolled');
-        if (ieIcon) ieIcon.classList.remove('scrolled');
-        if (bestWorkIcon) bestWorkIcon.classList.remove('scrolled');
-        if (contactMeIcon) contactMeIcon.classList.remove('scrolled');
+        ieIcon?.classList.remove('scrolled');
+        bestWorkIcon?.classList.remove('scrolled');
+        contactMeIcon?.classList.remove('scrolled');
     }
 });
+
 
 function updateClock() {
     const now = new Date();
@@ -304,6 +275,39 @@ function updateSizeDisplay() {
         document.getElementById('height').textContent = Math.round(rect.height);
     }
 }
+
+/* ============================
+   START MENU FUNCTIONALITY
+============================ */
+
+const startBtn = document.querySelector('.startButton');
+const startMenu = document.getElementById('xp-start-menu');
+
+startBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    const isOpen = !startMenu.classList.contains('hidden');
+    startMenu.classList.toggle('hidden');
+
+    // Disable scroll when start menu is open
+    if (!isOpen) {
+        document.body.classList.add('no-scroll');
+    } else {
+        const visibleTabs = document.querySelectorAll('.tab-container[style*="display: block"]');
+        if (visibleTabs.length === 0) document.body.classList.remove('no-scroll');
+    }
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!startMenu.contains(e.target) && !startBtn.contains(e.target)) {
+        startMenu.classList.add('hidden');
+
+        const visibleTabs = document.querySelectorAll('.tab-container[style*="display: block"]');
+        if (visibleTabs.length === 0) document.body.classList.remove('no-scroll');
+    }
+});
+
 
 // Open tab functions - updated to bring to front
 function openTab(tabClass) {
