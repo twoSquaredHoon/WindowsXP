@@ -1,12 +1,5 @@
 document.addEventListener("dragstart", e => e.preventDefault());
 
-// Disable dragging but allow clicking & typing
-document.addEventListener("mousedown", e => {
-    const tag = e.target.tagName.toLowerCase();
-    if (tag !== "input" && tag !== "textarea" && tag !== "button") {
-        e.preventDefault();
-    }
-});
 
 window.addEventListener("load", () => {
     const boot = document.getElementById("xp-boot-screen");
@@ -452,3 +445,11 @@ document.addEventListener("click", (e) => {
         document.querySelector('.virus-popup').classList.add('hidden');
     }
 });
+
+const crtBtn = document.querySelector(".crt-btn");
+const crtWrapper = document.getElementById("crt-wrapper");
+
+document.querySelector(".crt-btn").addEventListener("click", () => {
+    document.getElementById("crt-overlay").classList.toggle("active");
+});
+

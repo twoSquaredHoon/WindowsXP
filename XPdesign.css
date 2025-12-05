@@ -1728,3 +1728,33 @@ body.no-scroll {
     z-index: 10000000000;
     opacity: 0;          /* INVISIBLE */
 }
+
+/* FULLSCREEN CRT OVERLAY */
+#crt-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;      /* <-- important so user can still click UI */
+    z-index: 9999999;
+
+    opacity: 0;                /* initially off */
+    transition: opacity 0.3s ease;
+
+    mix-blend-mode: overlay;   /* main CRT blending */
+
+    background:
+        repeating-linear-gradient(
+            rgba(255,0,0,0.12) 0px,
+            rgba(0,255,0,0.12) 2px,
+            rgba(0,0,255,0.12) 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,0.04) 0px,
+            rgba(0,0,0,0.04) 3px
+        );
+}
+
+/* Turn on when CRT effect is active */
+#crt-overlay.active {
+    opacity: 1;
+}
