@@ -1,13 +1,66 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pixel-companion-widget</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Pixel Companion</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    canvas { image-rendering: pixelated; }
+  </style>
+</head>
+<body>
+  <canvas id="companion"></canvas>
+  <script>
+    const img = new Image()
+    img.src = './assets/study.png'
+
+    img.onload = () => {
+      const frameW = img.width / 2
+      const frameH = img.height / 2
+
+      const canvas = document.getElementById('companion')
+      canvas.width = frameW
+      canvas.height = frameH
+
+      const ctx = canvas.getContext('2d')
+      ctx.imageSmoothingEnabled = false
+
+      function drawFrame(col, row) {
+  ctx.clearRect(0, 0, frameW, frameH)
+  ctx.drawImage(img, col * frameW, row * frameH, frameW, frameH, 0, 0, frameW, frameH)
+}
+
+function runCycle() {
+  const bounces = Math.floor(Math.random() * 4) + 3
+  let count = 0
+
+  function bounce() {
+    if (count >= bounces * 2) {
+      drawFrame(0, 0)
+      const idleTime = (Math.random() * 2 + 1) * 1000
+      setTimeout(runCycle, idleTime)
+      return
+    }
+    const col = count % 2 === 0 ? 1 : 0
+    const row = count % 2 === 0 ? 0 : 1
+    drawFrame(col, row)
+    count++
+    setTimeout(bounce, 200)
+  }
+
+  bounce()
+}
+
+drawFrame(0, 0)
+runCycle()
+    }
+  </script>
+</body>
 </html>
