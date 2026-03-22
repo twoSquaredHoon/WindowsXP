@@ -40,7 +40,6 @@ function runFocus() {
   let count = 0
   let bounces = Math.floor(Math.random() * 4) + 3
   let idle = 0
-  let idleTarget = 0
 
   frameCallback = () => {
     if (idle > 0) {
@@ -53,8 +52,7 @@ function runFocus() {
       return
     }
     if (count >= bounces * 2) {
-      idleTarget = Math.floor(((Math.random() * 2 + 1) * 1000 + 3000) / 200)
-      idle = idleTarget
+      idle = Math.floor(((Math.random() * 2 + 1) * 1000 + 3000) / 200)
       drawCell(0, 1)
       return
     }
@@ -64,10 +62,17 @@ function runFocus() {
   }
 }
 
+function runSleep() {
+  frameCallback = () => {
+    drawCell(0, 2)
+  }
+}
+
 function setState(state) {
   frameCallback = null
   if (state === 1) runJump()
   else if (state === 2) runFocus()
+  else if (state === 3) runSleep()
 }
 
 applySkyTheme()

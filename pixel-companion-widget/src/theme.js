@@ -21,13 +21,51 @@ function getSkyColor(hour) {
   }
 
   const t = (hour - from.h) / (to.h - from.h)
-
   const lerp = (a, b) => Math.round(a + (b - a) * t)
   const mix = (a, b) => `rgb(${lerp(a[0], b[0])}, ${lerp(a[1], b[1])}, ${lerp(a[2], b[2])})`
-
   return `linear-gradient(to bottom, ${mix(from.top, to.top)}, ${mix(from.bot, to.bot)})`
 }
 
+let skyDiv = null
+let animating = false
+
 export function applySkyTheme(hour = new Date().getHours()) {
-  document.body.style.background = getSkyColor(hour)
+  if (!skyDiv) {
+    skyDiv = document.createElement('div')
+    skyDiv.style.cssText = `
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+    `
+    document.body.appendChild(skyDiv)
+    animateToHour(hour)
+    return
+  }
+
+  skyDiv.style.background = getSkyColor(hour)
+}
+
+function animateToHour(targetHour) {
+  if (animating) return
+  animating = true
+
+  const duration = 2000
+  const start = performance.now()
+
+  function tick(now) {
+    const elapsed = now - start
+    const progress = Math.min(elapsed / duration, 1)
+    const currentHour = progress * targetHour
+    skyDiv.style.background = getSkyColor(currentHour)
+
+    if (progress < 1) {
+      requestAnimationFrame(tick)
+    } else {
+      animating = false
+    }
+  }
+
+  requestAnimationFrame(tick)
 }
