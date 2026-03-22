@@ -28,8 +28,9 @@ function getSkyColor(hour) {
 
 let skyDiv = null
 let animating = false
+let currentHour = 0
 
-export function applySkyTheme(hour = new Date().getHours()) {
+export function applySkyTheme(targetHour = new Date().getHours()) {
   if (!skyDiv) {
     skyDiv = document.createElement('div')
     skyDiv.style.cssText = `
@@ -40,29 +41,30 @@ export function applySkyTheme(hour = new Date().getHours()) {
       z-index: 0;
     `
     document.body.appendChild(skyDiv)
-    animateToHour(hour)
-    return
   }
 
-  skyDiv.style.background = getSkyColor(hour)
+  animateToHour(currentHour, targetHour)
 }
 
-function animateToHour(targetHour) {
-  if (animating) return
+function animateToHour(fromHour, targetHour) {
+  if (animating) {
+    currentHour = fromHour
+  }
   animating = true
 
-  const duration = 2000
+  const duration = 500
   const start = performance.now()
 
   function tick(now) {
     const elapsed = now - start
     const progress = Math.min(elapsed / duration, 1)
-    const currentHour = progress * targetHour
-    skyDiv.style.background = getSkyColor(currentHour)
+    const h = fromHour + (targetHour - fromHour) * progress
+    skyDiv.style.background = getSkyColor(h)
 
     if (progress < 1) {
       requestAnimationFrame(tick)
     } else {
+      currentHour = targetHour
       animating = false
     }
   }

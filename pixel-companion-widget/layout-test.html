@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Layout Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #left {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 20%;
+            height: 100%;
+            border: 2px solid #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #222;
+            font-family: monospace;
+            transition: width 0.3s ease, transform 0.5s ease;
+            z-index: 2;
+        }
+
+        #left:hover {
+            width: 30%;
+        }
+
+        #left.hidden {
+            transform: translateX(-100%);
+        }
+
+        #right {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 20%;
+            height: 100%;
+            border: 2px solid #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #222;
+            font-family: monospace;
+            transition: width 0.3s ease, transform 0.5s ease;
+            z-index: 2;
+        }
+
+        #right:hover {
+            width: 30%;
+        }
+
+        #right.hidden {
+            transform: translateX(100%);
+        }
+
+        #center {
+            position: absolute;
+            left: 20%;
+            right: 20%;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            z-index: 1;
+            transition: left 0.5s ease, right 0.5s ease;
+        }
+
+        #center.expanded {
+            left: 0;
+            right: 0;
+        }
+
+        #top-center {
+            min-height: 60vh;
+            border: 2px solid #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #222;
+            font-family: monospace;
+            transition: min-height 0.5s ease;
+        }
+
+        #top-center.expanded {
+            min-height: 100vh;
+        }
+
+        #bottom-center {
+            min-height: 60vh;
+            border: 2px solid #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #222;
+            font-family: monospace;
+            transition: transform 0.5s ease;
+        }
+
+        #bottom-center.hidden {
+            transform: translateY(100%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="left">left</div>
+    <div id="center">
+        <div id="top-center">top center</div>
+        <div id="bottom-center">bottom center</div>
+    </div>
+    <div id="right">right</div>
+
+    <script>
+        let hidden = false
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code !== 'Space') return
+            e.preventDefault()
+            hidden = !hidden
+
+            document.getElementById('left').classList.toggle('hidden', hidden)
+            document.getElementById('right').classList.toggle('hidden', hidden)
+            document.getElementById('bottom-center').classList.toggle('hidden', hidden)
+            document.getElementById('top-center').classList.toggle('expanded', hidden)
+            document.getElementById('center').classList.toggle('expanded', hidden)
+            document.getElementById('center').style.overflowY = hidden ? 'hidden' : 'auto'
+        })
+    </script>
+</body>
+
+</html>
