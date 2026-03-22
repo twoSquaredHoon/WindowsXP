@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Animation Test</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #1a1a2e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    canvas { image-rendering: pixelated; }
+  </style>
+</head>
+<body>
+  <canvas id="companion" width="128" height="128"></canvas>
+  <script>
+    const CELL = 128
+    const sheet = new Image()
+    sheet.src = '/src/assets/animations.png'
+
+    const canvas = document.getElementById('companion')
+    const ctx = canvas.getContext('2d')
+    ctx.imageSmoothingEnabled = false
+
+    sheet.onload = () => {
+      let i = 0
+      setInterval(() => {
+        ctx.clearRect(0, 0, CELL, CELL)
+        ctx.drawImage(sheet, (i % 2) * CELL, 0, CELL, CELL, 0, 0, CELL, CELL)
+        i++
+      }, 200)
+    }
+  </script>
+</body>
+</html>

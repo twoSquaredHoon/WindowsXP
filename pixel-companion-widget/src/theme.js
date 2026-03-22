@@ -1,18 +1,33 @@
-export function applySkyTheme() {
-  const hour = new Date().getHours()
-  let gradient
+function getSkyColor(hour) {
+  const keyframes = [
+    { h: 0,  top: [10, 10, 46],    bot: [26, 26, 78] },
+    { h: 5,  top: [244, 164, 96],  bot: [255, 203, 164] },
+    { h: 7,  top: [135, 206, 235], bot: [224, 240, 255] },
+    { h: 12, top: [74, 144, 217],  bot: [135, 206, 235] },
+    { h: 17, top: [255, 112, 67],  bot: [171, 71, 188] },
+    { h: 20, top: [10, 10, 46],    bot: [26, 26, 78] },
+    { h: 24, top: [10, 10, 46],    bot: [26, 26, 78] },
+  ]
 
-  if (hour >= 5 && hour < 7) {
-    gradient = 'linear-gradient(to bottom, #f4a460, #ffcba4)'
-  } else if (hour >= 7 && hour < 12) {
-    gradient = 'linear-gradient(to bottom, #87ceeb, #e0f0ff)'
-  } else if (hour >= 12 && hour < 17) {
-    gradient = 'linear-gradient(to bottom, #4a90d9, #87ceeb)'
-  } else if (hour >= 17 && hour < 20) {
-    gradient = 'linear-gradient(to bottom, #ff7043, #ab47bc)'
-  } else {
-    gradient = 'linear-gradient(to bottom, #0a0a2e, #1a1a4e)'
+  let from = keyframes[0]
+  let to = keyframes[1]
+
+  for (let i = 0; i < keyframes.length - 1; i++) {
+    if (hour >= keyframes[i].h && hour < keyframes[i + 1].h) {
+      from = keyframes[i]
+      to = keyframes[i + 1]
+      break
+    }
   }
 
-  document.body.style.background = gradient
+  const t = (hour - from.h) / (to.h - from.h)
+
+  const lerp = (a, b) => Math.round(a + (b - a) * t)
+  const mix = (a, b) => `rgb(${lerp(a[0], b[0])}, ${lerp(a[1], b[1])}, ${lerp(a[2], b[2])})`
+
+  return `linear-gradient(to bottom, ${mix(from.top, to.top)}, ${mix(from.bot, to.bot)})`
+}
+
+export function applySkyTheme(hour = new Date().getHours()) {
+  document.body.style.background = getSkyColor(hour)
 }
